@@ -4,16 +4,26 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
+
 extern float Kp;
 extern float Ki;
 extern float Kd;
-extern uint8_t PID_ChangeFlag;
-
+extern float voltage;
+extern uint8_t voltageFlag;
+extern float temperatureSet;
+extern float temperatureNow;
+extern int16_t timeHigh;
+extern int16_t timeLow;
 
 
 
 void Receive_PID(void);
 void PID_ShowInit(void);
 void PID_ShowParameter(void);
+void BatteryWaring(void);
+void PID(float temperatureNow);
+void PID_Control(void);
 
 #endif
