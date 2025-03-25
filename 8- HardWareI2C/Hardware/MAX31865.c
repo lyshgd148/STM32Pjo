@@ -11,7 +11,8 @@
 
 #define MAX31865_DUMMY 0xFF
 
-#define A 3.9083e-3
+#define A 3.9083
+#define B -5.775e-4
 
 void MAX31865_Init(void)
 {
@@ -39,11 +40,7 @@ float MAX31865_GetTemperature(uint16_t Data)
 {   
     float resistance,result;
     resistance = 1.0 * MAX31865_PT1000_Resistance_Ref * Data / 32768.0;
-    result=(resistance-1000)/(A*1000.0);
-
+    result=(-1.0*A+sqrt(A*A-4*(1000-resistance)*B))/(2*B);
 
     return result;
-    /*
-
-     */
 }
