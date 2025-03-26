@@ -12,9 +12,9 @@
 
 #define timeBase 200
 
-float Kp = 1.5;
-float Ki = 0.0;
-float Kd = 0.75;
+float Kp = 20.36;
+float Ki = 0.088;
+float Kd = 10;
 float voltage;
 uint8_t voltageFlag = 0;
 float temperatureSet = 100.0;
@@ -115,12 +115,38 @@ void BatteryWaring(void)
 
 void PID(float temperatureNow)
 {
+	float u=0;
+	static float error_last_last=0;
 	static float error_last = 0;
 	static float error_now = 0;
+	// static double error_all=0;
+	
+	// /* 位置式PID 还是有点拉跨！ 位置式用了所有的误差和，待会试试增量式*/
+
+	// error_now = temperatureSet - temperatureNow;
+	// error_all+=error_now;
+	// // if(error_all>=timeBase/Ki/5) error_all=timeBase/Ki/5;
+	// // else if (error_all<=-timeBase/Ki/5) error_all=-timeBase/Ki/5;
+
+
+
+	// timeHigh = Kp * error_now +Ki*error_all+ Kd * (error_now - error_last);
+
+	// if (timeHigh > timeBase)
+	// {
+	// 	timeHigh = timeBase;
+	// }
+	// else if (timeHigh < 0)
+	// 	timeHigh = 0;
+	// timeLow = timeBase - timeHigh;
+	// error_last = error_now;
+
 
 	error_now = temperatureSet - temperatureNow;
-	timeHigh = Kp * error_now + Kd * (error_now - error_last);
 
+
+	u = Kp * (error_now-error_last) +Ki*error_now+ Kd * (error_now - 2*error_last+error_last_last);
+	timeHigh+=u;
 	if (timeHigh > timeBase)
 	{
 		timeHigh = timeBase;
@@ -128,7 +154,11 @@ void PID(float temperatureNow)
 	else if (timeHigh < 0)
 		timeHigh = 0;
 	timeLow = timeBase - timeHigh;
+
+	error_last_last=error_last;
 	error_last = error_now;
+	
+	
 }
 
 void PID_Control(void)
