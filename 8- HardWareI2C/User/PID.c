@@ -11,6 +11,7 @@
 #include "Serial.h"
 
 #define timeBase 200
+#define Voltage_proportion 6.6335
 
 float Kp = 20.36;
 float Ki = 0.088;
@@ -88,7 +89,7 @@ void PID_ShowParameter(void)
 	snprintf(str, sizeof(str), "%.2f", temperatureNow);
 	OLED_ShowString(50, 40, str, 6);
 
-	voltage = AD_GetValue() / 4095.0 * 6.6;
+	voltage = AD_GetValue() / 4095.0 * Voltage_proportion;
 	snprintf(str, sizeof(str), "%.2f", voltage);
 	OLED_ShowString(50, 50, str, 6);
 
