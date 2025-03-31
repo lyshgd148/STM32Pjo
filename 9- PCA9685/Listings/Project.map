@@ -1204,9 +1204,9 @@ Image Symbol Table
     i.floor                                  0x08001380   Section        0  floor.o(i.floor)
     i.fputc                                  0x0800145c   Section        0  serial.o(i.fputc)
     i.main                                   0x0800146c   Section        0  main.o(i.main)
-    .constdata                               0x080014c0   Section      129  ctype_o.o(.constdata)
-    .constdata                               0x08001544   Section        4  ctype_o.o(.constdata)
-    table                                    0x08001544   Data           4  ctype_o.o(.constdata)
+    .constdata                               0x08001510   Section      129  ctype_o.o(.constdata)
+    .constdata                               0x08001594   Section        4  ctype_o.o(.constdata)
+    table                                    0x08001594   Data           4  ctype_o.o(.constdata)
     .data                                    0x20000000   Section       20  stm32f10x_rcc.o(.data)
     APBAHBPrescTable                         0x20000000   Data          16  stm32f10x_rcc.o(.data)
     ADCPrescTable                            0x20000010   Data           4  stm32f10x_rcc.o(.data)
@@ -1371,10 +1371,10 @@ Image Symbol Table
     __scatterload_zeroinit                   0x08001351   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
     floor                                    0x08001381   Thumb Code   204  floor.o(i.floor)
     fputc                                    0x0800145d   Thumb Code    16  serial.o(i.fputc)
-    main                                     0x0800146d   Thumb Code    62  main.o(i.main)
-    __ctype_table                            0x080014c0   Data         129  ctype_o.o(.constdata)
-    Region$$Table$$Base                      0x08001548   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001568   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x0800146d   Thumb Code   118  main.o(i.main)
+    __ctype_table                            0x08001510   Data         129  ctype_o.o(.constdata)
+    Region$$Table$$Base                      0x08001598   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080015b8   Number         0  anon$$obj.o(Region$$Table)
     Serial_RxFlag                            0x20000014   Data           1  serial.o(.data)
     __stdout                                 0x20000018   Data           4  stdout.o(.data)
     Serial_RxPacket                          0x20000020   Data         100  serial.o(.bss)
@@ -1388,9 +1388,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001588, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000015d8, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00001568, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000015b8, Max: 0x00010000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1490,11 +1490,11 @@ Memory Map of the image
     0x0800135e   0x00000022   Code   RO         3660    i._printf_core      mc_w.l(printfb.o)
     0x08001380   0x000000dc   Code   RO         3642    i.floor             m_ws.l(floor.o)
     0x0800145c   0x00000010   Code   RO         3419    i.fputc             serial.o
-    0x0800146c   0x00000054   Code   RO         3544    i.main              main.o
-    0x080014c0   0x00000081   Data   RO         3974    .constdata          mc_w.l(ctype_o.o)
-    0x08001541   0x00000003   PAD
-    0x08001544   0x00000004   Data   RO         3975    .constdata          mc_w.l(ctype_o.o)
-    0x08001548   0x00000020   Data   RO         4005    Region$$Table       anon$$obj.o
+    0x0800146c   0x000000a4   Code   RO         3544    i.main              main.o
+    0x08001510   0x00000081   Data   RO         3974    .constdata          mc_w.l(ctype_o.o)
+    0x08001591   0x00000003   PAD
+    0x08001594   0x00000004   Data   RO         3975    .constdata          mc_w.l(ctype_o.o)
+    0x08001598   0x00000020   Data   RO         4005    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000488, Max: 0x00005000, ABSOLUTE)
@@ -1520,7 +1520,7 @@ Image component sizes
 
          0          0          0          0          0       4496   core_cm3.o
         70          0          0          0          0        838   delay.o
-        84         22          0          0          0        511   main.o
+       164         46          0          0          0        547   main.o
        132         22          0          0          0     204555   misc.o
        344         18          0          0          0       4418   myi2c.o
        512         42          0          0          0       3155   pac9685.o
@@ -1534,7 +1534,7 @@ Image component sizes
        328         28          0          0          0      24633   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-      2962        206        268         24       1128     288711   Object Totals
+      3042        230        268         24       1128     288747   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          0          1          4          0   (incl. Padding)
 
@@ -1599,15 +1599,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5076        254        404         32       1128     287431   Grand Totals
-      5076        254        404         32       1128     287431   ELF Image Totals
-      5076        254        404         32          0          0   ROM Totals
+      5156        278        404         32       1128     287467   Grand Totals
+      5156        278        404         32       1128     287467   ELF Image Totals
+      5156        278        404         32          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 5480 (   5.35kB)
+    Total RO  Size (Code + RO Data)                 5560 (   5.43kB)
     Total RW  Size (RW Data + ZI Data)              1160 (   1.13kB)
-    Total ROM Size (Code + RO Data + RW Data)       5512 (   5.38kB)
+    Total ROM Size (Code + RO Data + RW Data)       5592 (   5.46kB)
 
 ==============================================================================
 
