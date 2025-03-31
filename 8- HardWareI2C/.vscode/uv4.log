@@ -1,3 +1,7 @@
 Load "f:\\STM32Pjo\\8- HardWareI2C\\Objects\\Project.axf" 
 Erase Done.Programming Done.Verify OK.Application running ...
+<<<<<<< HEAD
 Flash Load finished at 13:56:25
+=======
+Flash Load finished at 11:29:48
+>>>>>>> dev

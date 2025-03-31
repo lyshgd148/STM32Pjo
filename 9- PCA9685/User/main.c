@@ -26,8 +26,18 @@ int main(void)
 			{
 				angle = (uint16_t)atoi(p + 1);
 			}
+			if(Serial_RxPacket[4]=='1'){
 			PCA9685_SetAngle(0,angle);
-			printf("Angle_OK!\n");
+			printf("Angle1_OK!\n");
+			}
+			else if(Serial_RxPacket[4]=='2'){
+			PCA9685_SetAngle(1,angle);
+			printf("Angle2_OK!\n");
+			}
+			else if(Serial_RxPacket[4]=='3'){
+			PCA9685_SetAngle(2,angle);
+			printf("Angle3_OK!\n");
+			}
 
 			Serial_RxFlag = 0;
 		}
