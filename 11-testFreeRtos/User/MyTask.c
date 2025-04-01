@@ -47,7 +47,7 @@ void start_task(void *pvParameters)
                 (UBaseType_t)3,
                 (TaskHandle_t *)&task2_handle);
 
-    xTaskCreate((TaskFunction_t)start_task,
+    xTaskCreate((TaskFunction_t)task3,
                 (char *)"task3",
                 (configSTACK_DEPTH_TYPE)TASK3_STACK,
                 (void *)NULL,
@@ -84,7 +84,7 @@ void task3(void *pvParameters)
 {
     while (1)
     {
-        if (GetKey())
+        if (GetKey()==1)
         {
             if (task1_handle != NULL)
             {
