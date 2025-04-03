@@ -15,6 +15,14 @@ int main(void)
 {
 	Serial_Init();
     PAC9685_Init();
+	PCA9685_SetAngle(0,30);
+	Delay_ms(200);
+	PCA9685_SetAngle(1,30);
+	Delay_ms(200);
+	PCA9685_SetAngle(2,30);
+	Delay_ms(200);
+	PCA9685_SetAngle(3,30);
+	Delay_ms(200);
 
     while (1)
     {
@@ -37,6 +45,10 @@ int main(void)
 			else if(Serial_RxPacket[4]=='3'){
 			PCA9685_SetAngle(2,angle);
 			printf("Angle3_OK!\n");
+			}
+			else if(Serial_RxPacket[4]=='4'){
+			PCA9685_SetAngle(3,angle);
+			printf("Angle4_OK!\n");
 			}
 
 			Serial_RxFlag = 0;
