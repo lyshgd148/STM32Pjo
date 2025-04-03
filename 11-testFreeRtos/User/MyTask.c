@@ -1,6 +1,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "LEDandKey.h"
+#include "Serial.h"
+#include "Delay.h"
+
 
 #define START_TASK_STACK 128
 void start_task(void *pvParameters);

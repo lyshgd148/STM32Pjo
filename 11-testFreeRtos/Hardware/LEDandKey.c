@@ -46,6 +46,7 @@ uint8_t GetKey(void)
         Delay_ms(10);
         if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_2) == 0)
         {
+			while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_2) == 0);
             return 1;
         }
     }
