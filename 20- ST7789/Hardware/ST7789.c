@@ -100,9 +100,9 @@ void ST7789_Init(void)
 	MySpi_SCL(1);
 	
 	MySpi_RES(0);
-	Delay_ms(20);
+	Delay_ms(50);
 	MySpi_RES(1);
-	Delay_ms(20);
+	Delay_ms(50);
 	MySpi_BLK(1);
 	
 	
