@@ -32,11 +32,11 @@ int main(void)
 //		}
 		
 //		区域填充
-//		LCD_Fill(50,10,100,100,Color);
-//		LCD_Fill(50,101,100,200,65535-Color);
-//		LCD_Fill(101,10,150,101,32768+Color);
-//		LCD_Fill(101,101,150,200,32768-Color);
-//		Color+=10;
+		LCD_Fill(50,10,100,100,Color);
+		LCD_Fill(50,101,100,200,65535-Color);
+		LCD_Fill(101,10,150,101,32768+Color);
+		LCD_Fill(101,101,150,200,32768-Color);
+		Color+=10;
 		
     }
 }
