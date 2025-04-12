@@ -24,69 +24,69 @@ int main(void)
     Delay_ms(500);
 	printf("Serial ok!\r\n");
 	
-    res = f_mount(&fs, "", 1);
-    if (res != FR_OK)
-    {
-        printf("挂载失败！错误码: %d\r\n", res);
-    }
-	else
-    {
-		printf("文件系统挂载成功\r\n");
-	}
-
-
-    res = f_open(&file, "DATA.txt", FA_READ);
-    if (res == FR_OK)
-    {	
-		
-		uint8_t t=0;
-        memset(SD_Buf, 0, sizeof(SD_Buf));
-		while(f_eof(&file)==0)
-		{	
-			
-			char Data_High[3]={0};
-			char Data_Low[3]={0};
-			uint16_t i=0,k,j=0;
-			f_read(&file, SD_Buf, sizeof(SD_Buf), &br);
-			while(i<6000)
-			{	
-				if(SD_Buf[i]!=' ') 
-				{	
-					k=i;
-					i%=5;
-					if(i<2) Data_High[i]=SD_Buf[k];
-					else Data_Low[i-2]=SD_Buf[k];
-					i=k;
-					
-				}
-				else
-				{	
-					sscanf(Data_High, "%hhx", ST7789_Buf+j);
-					j++;
-					sscanf(Data_Low, "%hhx", ST7789_Buf+j);
-					j++;
-				}
-				i++;
-			}
-			LCD_Fill_DMA(0,t*5,240,t*5+5);
-			
-			t++;
-			if(t>=48) t=0;
-		}
-        f_close(&file);
-    }
-	
-    else
-    {
-        printf("打开文件失败！\r\n");
-    }
-
-    f_mount(NULL, "", 1);
-	printf("文件卸载成功\r\n");
+   
 
 	while(1)
 	{
+		res = f_mount(&fs, "", 1);
+		if (res != FR_OK)
+		{
+			printf("挂载失败！错误码: %d\r\n", res);
+		}
+		else
+		{
+			printf("文件系统挂载成功\r\n");
+		}
+
+
+		res = f_open(&file, "DATA.txt", FA_READ);
+		if (res == FR_OK)
+		{	
+			
+			uint8_t t=0;
+			memset(SD_Buf, 0, sizeof(SD_Buf));
+			while(f_eof(&file)==0)
+			{	
+				
+				char Data_High[3]={0};
+				char Data_Low[3]={0};
+				uint16_t i=0,k,j=0;
+				f_read(&file, SD_Buf, sizeof(SD_Buf), &br);
+				while(i<6000)
+				{	
+					if(SD_Buf[i]!=' ') 
+					{	
+						k=i;
+						i%=5;
+						if(i<2) Data_High[i]=SD_Buf[k];
+						else Data_Low[i-2]=SD_Buf[k];
+						i=k;
+						
+					}
+					else
+					{	
+						sscanf(Data_High, "%hhx", ST7789_Buf+j);
+						j++;
+						sscanf(Data_Low, "%hhx", ST7789_Buf+j);
+						j++;
+					}
+					i++;
+				}
+				LCD_Fill_DMA(0,t*5,240,t*5+5);
+				
+				t++;
+				if(t>=48) t=0;
+			}
+			f_close(&file);
+		}
 		
-	}
+		else
+		{
+			printf("打开文件失败！\r\n");
+		}
+
+		f_mount(NULL, "", 1);
+		printf("文件卸载成功\r\n");
+		}
 }
 
