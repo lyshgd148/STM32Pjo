@@ -10,7 +10,7 @@ FATFS fs;        // 文件系统对象
 FIL file;        // 文件对象
 FRESULT res;     // 操作结果
 UINT bw, br;     // 实际读写的字节数
-char buffer[128]; // 读写缓冲区
+char buffer[10240]; // 读写缓冲区
 
 
 int main(void)
