@@ -37,7 +37,7 @@ int main(void)
 			printf("文件系统挂载成功\r\n");
 		}
 
-		res = f_open(&file, "DATA.bin", FA_READ);
+		res = f_open(&file, "APPLE.bin", FA_READ);
 		if (res == FR_OK)
 		{	
 			
