@@ -18,7 +18,7 @@ float Ki = 0.088;
 float Kd = 10;
 float voltage;
 uint8_t voltageFlag = 0;
-float temperatureSet = 100.0;
+float temperatureSet = 190.0;
 float temperatureNow;
 int16_t timeHigh, timeLow;
 extern char Serial_RxPacket[100];
